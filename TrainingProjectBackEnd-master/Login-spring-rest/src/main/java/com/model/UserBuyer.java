@@ -18,6 +18,8 @@ public class UserBuyer {
 
 	private String password;
 	private List<String> rqstNames = new ArrayList<>();
+	private List<String> acceptedRqsts = new ArrayList<>();
+	private List<String> orders = new ArrayList<>();
 
 	public UserBuyer() {
 
@@ -93,6 +95,22 @@ public class UserBuyer {
 	public String toString() {
 		return "User [userID=" + userID + ", username=" + username + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", emailId=" + emailId + ", password=" + password + "]";
+	}
+
+	public List<String> getAcceptedRqsts() {
+		return acceptedRqsts;
+	}
+
+	public void setAcceptedRqsts(List<String> acceptedRqsts) {
+		this.acceptedRqsts = acceptedRqsts;
+	}
+
+	public List<String> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<String> orders) {
+		this.orders = orders;
 	}
 
 //	@Override

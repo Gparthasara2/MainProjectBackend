@@ -5,21 +5,14 @@ import org.springframework.data.annotation.Id;
 public class OrderModel {
 
 	@Id
-	private String id;
-	private String rqstName;
-	private String svcName;
+	private String oid;
+	private String oName;
 	private int quantity;
 	private double price;
 	private String bName;
 	private String spName;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 
 	public int getQuantity() {
 		return quantity;
@@ -37,20 +30,22 @@ public class OrderModel {
 		this.price = price;
 	}
 
-	public String getRqstName() {
-		return rqstName;
+	
+
+	public String getOid() {
+		return oid;
 	}
 
-	public void setRqstName(String rqstName) {
-		this.rqstName = rqstName;
+	public void setOid(String oid) {
+		this.oid = oid;
 	}
 
-	public String getSvcName() {
-		return svcName;
+	public String getoName() {
+		return oName;
 	}
 
-	public void setSvcName(String svcName) {
-		this.svcName = svcName;
+	public void setoName(String oName) {
+		this.oName = oName;
 	}
 
 	public String getbName() {

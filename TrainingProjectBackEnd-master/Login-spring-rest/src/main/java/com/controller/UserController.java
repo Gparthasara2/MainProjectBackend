@@ -54,8 +54,8 @@ public class UserController {
 
 	}
 
-	@PutMapping("/ServiceProviders/username/rqstName/{rqstName}/{username}")
-	public String addRequesttoServiceProvider(@PathVariable("rqstName") String rqstName,
+	@PutMapping("/ServiceProviders/username/rqstName/addRequest/{rqstName}/{username}")
+	public ServiceProvider addRequesttoServiceProvider(@PathVariable("rqstName") String rqstName,
 			@PathVariable("username") String username) {
 		ServiceProvider user = userService.findUserByName(username);
 		System.out.println(user);
@@ -63,19 +63,139 @@ public class UserController {
 		System.out.println(user.getRqstNames());
 		userService.addUser(user);
 		System.out.println(user);
-		return rqstName;
+		return user;
+		
+	}
+	
+	@PutMapping("/ServiceProviders/username/rqstName/removeRequest/{rqstName}/{username}")
+	public ServiceProvider removeRequestFromServiceProvider(@PathVariable("rqstName") String rqstName,
+			@PathVariable("username") String username) {
+		ServiceProvider user = userService.findUserByName(username);
+		System.out.println(user);
+		user.getRqstNames().remove(rqstName);
+		System.out.println(user.getRqstNames());
+		userService.addUser(user);
+		System.out.println(user);
+		return user;
+		
+	}
+	
+	@PutMapping("/ServiceProviders/username/rqstName/addAcceptedRequest/{rqstName}/{username}")
+	public ServiceProvider addAcceptedRequesttoServiceProvider(@PathVariable("rqstName") String rqstName,
+			@PathVariable("username") String username) {
+		ServiceProvider user = userService.findUserByName(username);
+		System.out.println(user);
+		user.getAcceptedRqsts().add(rqstName);
+		System.out.println(user.getAcceptedRqsts());
+		userService.addUser(user);
+		System.out.println(user);
+		return user;
+		
+	}
+	
+	@PutMapping("/ServiceProviders/username/rqstName/removeAcceptedRequest/{rqstName}/{username}")
+	public ServiceProvider removeAcceptedRequesttoServiceProvider(@PathVariable("rqstName") String rqstName,
+			@PathVariable("username") String username) {
+		ServiceProvider user = userService.findUserByName(username);
+		System.out.println(user);
+		user.getAcceptedRqsts().remove(rqstName);
+		System.out.println(user.getAcceptedRqsts());
+		userService.addUser(user);
+		System.out.println(user);
+		return user;
+		
+	}
+	
+	@PutMapping("/ServiceProviders/username/orderName/addOrder/{orderName}/{username}")
+	public ServiceProvider addOrdertoServiceProvider(@PathVariable("orderName") String orderName,
+			@PathVariable("username") String username) {
+		ServiceProvider user = userService.findUserByName(username);
+		System.out.println(user);
+		user.getOrders().add(orderName);
+		System.out.println(user.getOrders());
+		userService.addUser(user);
+		System.out.println(user);
+		return user;
+		
+	}
+	
+	@PutMapping("/BuyerUsers/username/rqstName/addRequest/{rqstName}/{username}")
+	public UserBuyer addRequesttoUserBuyer(@PathVariable("rqstName") String rqstName,
+			@PathVariable("username") String username) {
+		UserBuyer user = buyerService.findUserByName(username);
+		System.out.println(user);
+		user.getRqstNames().add(rqstName);
+		System.out.println(user.getRqstNames());
+		buyerService.addUser(user);
+		System.out.println(user);
+		return user;
+		
+	}
+	
+	@PutMapping("/BuyerUsers/username/rqstName/removeRequest/{rqstName}/{username}")
+	public UserBuyer removeRequestFromUserBuyer(@PathVariable("rqstName") String rqstName,
+			@PathVariable("username") String username) {
+		UserBuyer user = buyerService.findUserByName(username);
+		System.out.println(user);
+		user.getRqstNames().remove(rqstName);
+		System.out.println(user.getRqstNames());
+		buyerService.addUser(user);
+		System.out.println(user);
+		return user;
+		
+	}
+	
+	@PutMapping("/BuyerUsers/username/rqstName/addAcceptedRequest/{rqstName}/{username}")
+	public UserBuyer addAcceptedRequesttoUserBuyer(@PathVariable("rqstName") String rqstName,
+			@PathVariable("username") String username) {
+		UserBuyer user = buyerService.findUserByName(username);
+		System.out.println(user);
+		user.getAcceptedRqsts().add(rqstName);
+		
+		System.out.println(user.getAcceptedRqsts());
+		buyerService.addUser(user);
+		System.out.println(user);
+		return user;
+		
+	}
+	
+	@PutMapping("/BuyerUsers/username/rqstName/removeAcceptedRequest/{rqstName}/{username}")
+	public UserBuyer removeAcceptedRequestfromUserBuyer(@PathVariable("rqstName") String rqstName,
+			@PathVariable("username") String username) {
+		UserBuyer user = buyerService.findUserByName(username);
+		System.out.println(user);
+		user.getAcceptedRqsts().remove(rqstName);
+		
+		System.out.println(user.getAcceptedRqsts());
+		buyerService.addUser(user);
+		System.out.println(user);
+		return user;
+		
+	}
+	
+	@PutMapping("/BuyerUsers/username/orderName/addOrder/{orderName}/{username}")
+	public UserBuyer addOrdertoUserBuyer(@PathVariable("orderName") String orderName,
+			@PathVariable("username") String username) {
+		UserBuyer user = buyerService.findUserByName(username);
+		System.out.println(user);
+		user.getOrders().add(orderName);
+		
+		System.out.println(user.getOrders());
+		buyerService.addUser(user);
+		System.out.println(user);
+		return user;
 		
 	}
 	
 	@PutMapping("/ServiceProviders/username/svcName/{svcName}/{username}")
-	public String addServicetoServiceProvider(@PathVariable("svcName") String svcName,
+	public ServiceProvider addServicetoServiceProvider(@PathVariable("svcName") String svcName,
 			@PathVariable("username") String username) {
 		ServiceProvider user = userService.findUserByName(username);
 		System.out.println(user);
 		user.getSvcNames().add(svcName);
 		userService.addUser(user);
 		System.out.println(user);
-		return svcName;
+		return user;
 		
 	}
 
@@ -116,7 +236,7 @@ public class UserController {
 
 	@PostMapping("/Orders")
 	public ResponseEntity<OrderModel> addOrder(@RequestBody OrderModel ordr) {
-		if (ordrDao.isOrderExists(ordr.getId())) {
+		if (ordrDao.isOrderExists(ordr.getOid())) {
 			return new ResponseEntity<OrderModel>(HttpStatus.CONFLICT);
 		} else {
 			ordrDao.addOrder(ordr);
